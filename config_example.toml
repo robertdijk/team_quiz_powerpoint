@@ -1,0 +1,40 @@
+title = "Quiz title" # The title that appears on the title slides.
+pickle-file="quiz.pickle" # The file to save the quiz in once imported
+template-file="template.pptx" # The template powerpoint to use
+
+[import.questions.fields] # These have to match the fields in the questions form
+name-field = "Name"
+team-field = "Team"
+question-field = "Question"
+correct-answer-field = "Correct answer"
+wrong-answer-field-1 = "Wrong answer 1"
+wrong-answer-field-2 = "Wrong answer 2"
+wrong-answer-field-3 = "Wrong answer 3"
+
+[import.answers.fields] # These have to match the fields in the questions answers
+name-field = "Name"
+team-field = "Team"
+question-field = "Question {}"
+
+[question-presentation]
+file = "questions.pptx" # The output file for generating the questions presentation
+timer = true # Whether to use the 20 sec timer in the presentation
+music = true # Whether to use the music with the timer
+end-title = "End" # The text on the last slide of the questions
+
+[question-presentation.rules-slide] # Add this section if you want a rules slide
+title = "Rules" # The title of the rules slide
+rules = [       # The actual rules
+    "Rule 1",
+    "Rule 2",
+]
+
+[question-presentation.qr-slide] # Add this section if you want a qr-code slide
+title = "Scan the QR-code" # The title of the qr-code slide
+url = "example.com" # The link the qr-code should go to, change this to the link of the answers form
+
+[solution-presentation]
+file = "solutions.pptx" # The output file for generating the solutions presentation
+music = true # Whether to use music during the presentation
+podium-slide = true # Whether to have a podium slide
+team-slide = true # Whether to have a teams score slide

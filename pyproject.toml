@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "team_quiz_powerpoint"
+version = "1.0.0"
+authors = [
+    { name = "Robert van Dijk", email = "contact@robertvandijk.nl" },
+]
+description = "A tool to generate a pub quiz style Powerpoints based on questions and answers received from Microsoft Forms"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "numpy",
+    "openpyxl",
+    "pandas",
+    "python-pptx",
+    "tomli",
+    "schema",
+    "qrcode[pil]",
+]
+
+[project.optional-dependencies]
+dev = [ "bumpver", "pip-tools"]
+
+[project.scripts]
+import_questions = "team_quiz_powerpoint.import_questions:main"
+import_answers = "team_quiz_powerpoint.import_answers:main"
+generate_questions_presentation = "team_quiz_powerpoint.generate_questions_presentation:main"
+generate_solutions_presentation = "team_quiz_powerpoint.generate_solutions_presentation:main"
+print_quiz = "team_quiz_powerpoint.print_quiz:main"
+
+[project.urls]
+Homepage = "https://github.com/robertdijk/team_quiz_powerpoint"
+
+[tool.bumpver]
+current_version = "1.0.0"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message = "Bump version {old_version} -> {new_version}"
+commit = true
+tag = true
+push = false
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = [
+    'current_version = "{version}"',
+    'version = "{version}"',
+]
+"src/team_quiz_powerpoint/__init__.py" = ["{version}"]
